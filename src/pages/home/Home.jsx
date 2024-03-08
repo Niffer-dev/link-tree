@@ -4,17 +4,30 @@ const Home = () => {
   return (
     <div className='flex justify-center'>
         <div className="w-[270px] mt-5 rounded-[50px] border-2 h-[80vh] flex items-center justify-center relative">
-            <div className="w-[250px] rounded-[50px] border-2 h-[75vh] flex justify-center bg-purple-50">
+            <div className="w-[250px] rounded-[50px] border-2 h-[75vh] flex justify-center bg-purple-50 flex-col">
                 <div className='bg-white rounded-[6px] h-[22px] w-[100px] absolute top-[10px] border-x-2 border-b-2'>
                 </div>
                 <div className='flex items-center justify-center bg-black h-[90px] w-full'>
                     <div className=' rounded-full bg-white mt-[2rem] mx-auto h-[80px] w-[80px]'>
                 </div>
                 </div>
-                <div className='mt-[16rem] flex flex-col'>
-                    <button><i class="ri-github-fill"></i>Github</button>
-                    <button><i class="ri-youtube-line"></i>Youtube</button>
-                    <button><i class="ri-linkedin-box-line"></i>LinkedIn</button>
+                <div className='mt-[8rem] flex flex-col justify-center items-center'>
+                    <div className='flex item-center justify-between'>
+                        <div>
+                            <button><i class="ri-github-fill"></i>Github</button>
+                        </div>
+                        <div>
+                            <i class="ri-arrow-right-line"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <button><i class="ri-youtube-line"></i>Youtube</button>
+                        <i class="ri-arrow-right-line"></i>
+                    </div>
+                    <div>
+                        <button><i class="ri-linkedin-box-line"></i>LinkedIn</button>
+                        <i class="ri-arrow-right-line"></i>
+                    </div>
                 </div>
             </div>
         </div>
