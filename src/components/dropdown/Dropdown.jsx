@@ -1,7 +1,16 @@
 import React, { useState } from 'react';
+import facebook from '../../assets/facebook.jpeg'
+
 
 const Dropdown = () => {
   const [isOpen, setIsOpen] = useState(false);
+
+  const linksArray = [
+    {logo: facebook, name:'Facebook'},
+    {logo:'pic', name:'Youtube'},
+    {logo:'pic', name:'WhatsApp'},
+    {logo:'pic', name:'Instagram'},
+]
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
