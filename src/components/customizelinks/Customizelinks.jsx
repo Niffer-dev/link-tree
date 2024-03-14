@@ -30,11 +30,13 @@ const Customizelinks = () => {
                         </div>
 
                         <div>
-                            <p onClick={(e) => {
+                            <i onClick={(e) => {
                                 e.stopPropagation();
                                 setLinksDropDown(!linksDropDown)
                                 console.log("hello");
-                            }} className='cursor-pointer'>V</p>
+                            }} className='text-black ' class="ri-arrow-down-s-line cursor-pointer text-2xl"
+                            ></i>
+                            {/* <p className='cursor-pointer'>V</p> */}
 
                             {
                                 linksDropDown &&
@@ -72,16 +74,18 @@ const Customizelinks = () => {
 
   return (
     <>
-        <div className='px-[2rem] py-[2rem] w-[45%] m-5 bg-purple-50'>
+        <div className='px-[2rem] py-[2rem] w-[50%] h-[580px] m-5 bg-purple-50 rounded-md'>
             <div className='py-[1rem] rounded-md shadow-gray-500'>
                 <h2 className='font-bold text-[25px] text-gray-700'>Customize your links</h2>
                 <p className='text-[12px] pb-[15px] pt-[5px] text-gray-700'>Add/edit/remove links below and then share all your profit with the whole!</p>
                 <button onClick={handleCreateTemplateDiv} className='text-[13px] font-bold text-purple-700 w-[100%] py-[9px] px-[20px] rounded-[6px]' style={{border: '1px solid purple'}}> + Add new link</button>
             </div>
 
-            {templateDivs.map((templateDiv, index) => (
-                <div key={index}>{templateDiv}</div>
-            ))}
+            <div className='container max-h-[390px] overflow-y-auto'>
+                {templateDivs.map((templateDiv, index) => (
+                    <div key={index}>{templateDiv}</div>
+                ))}
+            </div>
         </div> 
     </>
   )
