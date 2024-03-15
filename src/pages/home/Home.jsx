@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Phone from '../../components/phonecomponent/Phone';
 import Customizelinks from '../../components/customizelinks/Customizelinks';
 import Button from '../../components/button/Button';
+import Testing from '../../components/testing/Testing';
 
 const Home = () => {
     const [number, setNumber] = useState(0);
@@ -9,8 +10,12 @@ const Home = () => {
     const [inputValue, setInputValue] = useState('')
 
 
-    const saveLinks = () => {
-      console.log(inputValue)
+    const [links, setLinks] = useState([]);
+
+    function getInputs() {
+      links.map(val => {
+        console.log(val);
+      });
     }
 
   return (
@@ -18,11 +23,11 @@ const Home = () => {
       <Phone />
       
       <div className='flex-col w-[50%]'>
-        <Customizelinks setInputValue={setInputValue} />
+        <Customizelinks links={links} setLinks={setLinks}/>
 
-        <Button saveLinks={saveLinks}/>
+        <Button getInputs={getInputs}/>
       </div> 
-
+      
     </div>
    )
 }
