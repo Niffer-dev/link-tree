@@ -11,7 +11,7 @@ const Userprofile = () => {
         <div>
           <Profile />
 
-          <Button />
+          {/* <Button /> */}
         </div>
     </div>
   )
