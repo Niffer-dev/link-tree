@@ -1,6 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 const Profile = () => {
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
+    const [email, setEmail] = useState('');
+
   return (
     <div>
         <div className="px-[2rem] py-[1rem] w-[100%] h-[580px] m-5 bg-purple-50 rounded-md shadow-md shadow-slate-200">
@@ -17,18 +21,22 @@ const Profile = () => {
             <div className='mt-4 bg-gray-50 px-[1rem] py-[1rem] shadow-md shadow-slate-100'>
                 <div className='flex justify-between'>
                     <p className='text-[13px]'>First name</p>
-                    <input type="text" className='px-[15px] py-[5px] w-auto shadow-slate-300 shadow-sm'/>
+                    <input onChange={(e) => {setFirstName(e.target.value)}} type="text" className='px-[15px] py-[5px] w-auto shadow-slate-300 shadow-sm'/>
                 </div>
                 <div className='flex justify-between my-5'>
                     <p className='text-[13px]'>Last name</p>
-                    <input type="text" className='px-[15px] py-[5px] w-auto shadow-slate-300 shadow-sm'/>
+                    <input onChange={(e) => {setLastName(e.target.value)}} type="text" className='px-[15px] py-[5px] w-auto shadow-slate-300 shadow-sm'/>
                 </div>
                 <div className='flex justify-between'>
                     <p className='text-[13px]'>Email</p>
-                    <input type="text" className='px-[15px] py-[5px] w-auto shadow-slate-300 shadow-sm'/>
+                    <input onChange={(e) => {setEmail(e.target.value)}} type="text" className='px-[15px] py-[5px] w-auto shadow-slate-300 shadow-sm'/>
                 </div>
             </div>
         </div>
+        
+        {
+        alert && <Alert alertType={alertType} alert={alert} setAlert={setAlert} />
+        }
     </div>
   )
 }

@@ -3,6 +3,7 @@ import Phone from '../../components/phonecomponent/Phone';
 import Customizelinks from '../../components/customizelinks/Customizelinks';
 import Button from '../../components/button/Button';
 import Testing from '../../components/testing/Testing';
+import Alert from '../../components/alertModal/Alert';
 
 const Home = () => {
     const [number, setNumber] = useState(0);
@@ -27,6 +28,8 @@ const Home = () => {
 
         <Button getInputs={getInputs}/>
       </div> 
+      
+      <Alert/>
       
     </div>
    )
