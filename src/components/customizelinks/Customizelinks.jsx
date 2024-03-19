@@ -85,7 +85,7 @@ const Customizelinks = ({ setLinks, links }) => {
 
   return (
     <div>
-      <div className="px-[2rem] py-[2rem] w-[100%] h-[580px] m-5 bg-purple-50 rounded-md">
+      <div className="px-[2rem] py-[2rem] w-[100%] h-[580px] m-5 bg-purple-50 rounded-md shadow-md shadow-slate-200">
         <div className="py-[1rem] rounded-md shadow-gray-500">
           <h2 className="font-bold text-[25px] text-gray-700">Customize your links</h2>
 
@@ -95,7 +95,7 @@ const Customizelinks = ({ setLinks, links }) => {
         </div>
 
 
-        <div className="container max-h-[390px] overflow-y-auto ">
+        <div className="container max-h-[390px] overflow-y-auto">
           {links.map((odd, index) => (
             <div key={index} className="pb-[50px] border-black">
               <div className="flex justify-between text-[10px] py-[5px] text-gray-700 font-bold">
