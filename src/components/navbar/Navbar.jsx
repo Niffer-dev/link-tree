@@ -1,7 +1,11 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import Preview from '../../pages/preview/Preview'
 
 const Navbar = () => {
+
+  const navigate = useNavigate()
+
   return (
     <nav className='flex justify-between items-center px-[5rem] py-[1rem] bg-purple-50'>
         <div className='flex gap-1 font-bold'>
@@ -23,7 +27,7 @@ const Navbar = () => {
               <Link to='/userprofile' className='flex gap-1 text-[13px] px-[20px] py-[10px] rounded-md cursor-pointer hover:bg-purple-100 hover:text-purple-700'><i class="ri-user-3-line"></i>Profile Details</Link>
             </li>
         </div>   
-        <button className='text-[14px] hover:text-purple-700 hover:bg-purple-100 px-[20px] py-[5px] rounded-md text-semibold' style={{border: '1px solid purple'}}>Preview</button>
+        <button className='text-[14px] hover:text-purple-700 hover:bg-purple-100 px-[20px] py-[5px] rounded-md text-semibold' style={{border: '1px solid purple'}} onClick={() => navigate('/Preview')}>Preview</button>
     </nav>
   )
 }

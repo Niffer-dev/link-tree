@@ -1,15 +1,19 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Phone from '../../components/phonecomponent/Phone'
 import Profile from '../../components/profiledetails/Profile'
 import Button from '../../components/button/Button'
 
 const Userprofile = () => {
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [email, setEmail] = useState('');
+
   return (
     <div className='flex justify-center'>
-       <Phone />
+       <Phone firstName={firstName} lastName={lastName} email={email}/>
 
         <div>
-          <Profile />
+          <Profile firstName={firstName} lastName={lastName} email={email} setFirstName={setFirstName} setLastName={setLastName} setEmail={setEmail}/>
 
           {/* <Button /> */}
         </div>

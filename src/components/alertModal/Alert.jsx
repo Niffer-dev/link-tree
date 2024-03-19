@@ -10,7 +10,7 @@ const Alert = ({ alertType, setMsg, msg}) => {
                     alertType === 'error' ? <i class="ri-close-large-fill text-[100px] text-center inline-flex text-red-700"></i> : <i class="ri-checkbox-circle-line text-7xl text-center inline-flex text-green-700"></i>
                 }
 
-                <p className='mt-[20px] text-3xl text-black'>{msg}</p>
+                <p className='mt-[20px] text-xl text-black'>{msg}</p>
                 <button className='mt-[30px] text-white bg-red-700 px-[12px] py-[5px] rounded-xl' onClick={() => setMsg(false)}>OK</button>
             </div>
         </div>

@@ -2,6 +2,18 @@ import React from 'react'
 import Linkbuttons from '../../components/linkbuttons/Linkbuttons'
 
 const Preview = () => {
+
+    // const getFromLocalStorage = () => {
+    //     const dataArrayJSON = localStorage.getItem('dataArray');
+    //     const retrievedDataArray = JSON.parse(dataArrayJSON);
+    
+    //     console.log(retrievedDataArray);
+    // }
+
+    // getFromLocalStorage()
+
+    const user = JSON.parse(localStorage.getItem('dataArray'))
+
   return (
     <div>
         <div className=' bg-blue-700 h-[250px] rounded-bl-2xl rounded-br-2xl'>
@@ -13,8 +25,8 @@ const Preview = () => {
                 </div>
 
                 <div className=' text-center py-[20px]'>
-                    <h3 className=' font-bold text-[25px] pb-[10px] text-gray-800'>Ngini Jennifer</h3>
-                    <p className='text-[12px]'>nginijenny@gmail.com</p>
+                    <h3 className=' font-bold text-[25px] pb-[10px] text-gray-800'>{user.firstname} {user.lastname}</h3>
+                    <p className='text-[12px]'>{user.email}</p>
                 </div>
 
                 <Linkbuttons/>
