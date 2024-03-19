@@ -10,7 +10,6 @@ const Home = () => {
     const [addLink, setAddLink] = useState(0);
     const [inputValue, setInputValue] = useState('')
 
-
     const [links, setLinks] = useState([]);
 
     function getInputs() {
@@ -28,9 +27,6 @@ const Home = () => {
 
         <Button getInputs={getInputs}/>
       </div> 
-      
-      <Alert/>
-      
     </div>
    )
 }
