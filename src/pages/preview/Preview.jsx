@@ -3,16 +3,9 @@ import Linkbuttons from '../../components/linkbuttons/Linkbuttons'
 
 const Preview = () => {
 
-    // const getFromLocalStorage = () => {
-    //     const dataArrayJSON = localStorage.getItem('dataArray');
-    //     const retrievedDataArray = JSON.parse(dataArrayJSON);
-    
-    //     console.log(retrievedDataArray);
-    // }
 
-    // getFromLocalStorage()
 
-    const user = JSON.parse(localStorage.getItem('dataArray'))
+    const user = JSON.parse(localStorage.getItem('dataArray')  ?? '{}')
 
   return (
     <div>

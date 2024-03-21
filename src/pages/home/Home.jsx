@@ -4,6 +4,7 @@ import Customizelinks from '../../components/customizelinks/Customizelinks';
 import Button from '../../components/button/Button';
 import Testing from '../../components/testing/Testing';
 import Alert from '../../components/alertModal/Alert';
+import Dropdown from '../../components/dropdown/Dropdown';
 
 const Home = () => {
     const [number, setNumber] = useState(0);
@@ -26,7 +27,7 @@ const Home = () => {
         <Customizelinks links={links} setLinks={setLinks}/>
 
         <Button getInputs={getInputs}/>
-      </div> 
+      </div>
     </div>
    )
 }

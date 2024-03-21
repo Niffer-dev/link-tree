@@ -1,9 +1,14 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Linkbuttons from '../linkbuttons/Linkbuttons'
 
-const Phone = ({firstName, lastName, email}) => {
+const Phone = ({firstName, lastName, email, socialLinks, setSocialLinks}) => {
 
   const user = JSON.parse(localStorage.getItem('dataArray'))
+
+  const storedLinks = JSON.parse(localStorage.getItem('socialLinks'));
+
+  // const storedLinks = JSON.parse(localStorage.getItem('socialLinks'))
+  // console.log(storedLinks[index].selectedOption);
 
   return (
     <div>
@@ -28,7 +33,7 @@ const Phone = ({firstName, lastName, email}) => {
                 </div>
                 }
 
-                <Linkbuttons/>
+                <Linkbuttons storedLinks={storedLinks}/>
             </div>
         </div>
     </div>

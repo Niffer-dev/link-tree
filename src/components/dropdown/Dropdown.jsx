@@ -1,37 +1,56 @@
 import React, { useState } from 'react';
-import facebook from '../../assets/facebook.jpeg'
 
+function Dropdown() {
+  const [dropdowns, setDropdowns] = useState([]);
 
-const Dropdown = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const addDropdown = () => {
+    const newDropdowns = [...dropdowns];
+    newDropdowns.push({ selectedOption: '', inputValue:'' });
+    setDropdowns(newDropdowns);
+    console.log(newDropdowns);
+  };
 
-  const linksArray = [
-    {logo: facebook, name:'Facebook'},
-    {logo:'pic', name:'Youtube'},
-    {logo:'pic', name:'WhatsApp'},
-    {logo:'pic', name:'Instagram'},
-]
+  const handleDropdownChange = (index, e, field) => {
+    const { value } = e.target;
+    const newDropdowns = [...dropdowns];
+    if(field === 'logo'){
+      newDropdowns[index].selectedOption = value;
+    }else if(field === 'link'){
+      newDropdowns[index].inputValue = value
+    }
+    setDropdowns(newDropdowns);
+  };
 
-  const toggleDropdown = () => {
-    setIsOpen(!isOpen);
+  const removeDropdown = (index) => {
+    const newDropdowns = [...dropdowns];
+    newDropdowns.splice(index, 1);
+    setDropdowns(newDropdowns);
   };
 
   return (
-    <div className="relative">
-      <button onClick={toggleDropdown} className="border px-4 py-2 bg-gray-200">
-        Toggle Dropdown
-      </button>
-      {isOpen && (
-        <div className="absolute top-full left-0 mt-1 bg-white border border-gray-300 shadow-md">
-          <ul>
-            <li className="px-4 py-2">Option 1</li>
-            <li className="px-4 py-2">Option 2</li>
-            <li className="px-4 py-2">Option 3</li>
-          </ul>
+    <div>
+      <button onClick={addDropdown}>Add Dropdown</button>
+      {dropdowns.map((dropdown, index) => (
+        <div key={index}>
+          <select
+            value={dropdown.selectedOption}
+            onChange={(e) => handleDropdownChange(index, e, 'logo')}
+          >
+            <option value="">Select an option</option>
+            <option value="Option 1">Option 1</option>
+            <option value="Option 2">Option 2</option>
+            <option value="Option 3">Option 3</option>
+          </select>
+          <button onClick={() => removeDropdown(index)}>Remove</button>
+          <p>Selected Option: {dropdown.selectedOption}</p>
+          <input type="text"
+          value={dropdown.inputValue}
+          onChange={(e) => handleDropdownChange(index, e, 'link')}
+           className='border' />
         </div>
-      )}
+      ))}
     </div>
   );
-};
+}
 
 export default Dropdown;

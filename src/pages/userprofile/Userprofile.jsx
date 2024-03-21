@@ -8,9 +8,12 @@ const Userprofile = () => {
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
 
+  const [socialLinks, setSocialLinks] = useState([]);
+
+
   return (
     <div className='flex justify-center'>
-       <Phone firstName={firstName} lastName={lastName} email={email}/>
+       <Phone firstName={firstName} lastName={lastName} email={email}  socialLinks={socialLinks} setSocialLinks={setSocialLinks}/>
 
         <div>
           <Profile firstName={firstName} lastName={lastName} email={email} setFirstName={setFirstName} setLastName={setLastName} setEmail={setEmail}/>
