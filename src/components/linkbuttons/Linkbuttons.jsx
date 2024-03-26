@@ -4,17 +4,22 @@ import { Link, useNavigate } from 'react-router-dom'
 const Linkbuttons = ({storedLinks}) => {
 
     const navgate = useNavigate()
+    console.log();
 
   return (
     <div className='mt-[2rem] flex flex-col justify-center items-center text-white'>
         <div className='flex-col item-center text-center justify-between w-[100%]'>
             {
                 storedLinks && storedLinks.map(link => (
+                    <Link target='_blank' to={link.inputValue}>
                     <div className='flex justify-between p-[10px] bg-[#000] w-[80%] mx-[25px] rounded-md mb-[20px]'>
-                        <Link target='_blank' to={link.inputValue}><i class="ri-github-fill text-white mr-1"></i>{link.selectedOption}</Link>
+                        <div>
+                            <i class="ri-github-fill text-white mr-1"></i>{link.selectedOption}
+                        </div>
                         {/* <button onClick={e => navgate(link.inputValue)} ></button> */}
                         <i class="ri-arrow-right-line text-white"></i>
                     </div>
+                    </Link>
                 ))
             }
 

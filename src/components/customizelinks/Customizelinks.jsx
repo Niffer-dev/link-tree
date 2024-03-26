@@ -46,13 +46,15 @@ const Customizelinks = ({ setLinks, links }) => {
   const [linkTag, setLinkTag] = useState('');
   const [isValidLink, setIsValidLink] = useState(true);
 
-  // const handleChange = (event) => {
-  //   const inputValue = event.target.value;
-  //   setLinkTag(inputValue);
-  //   // Validate the input value using a regular expression
-  //   const isValid = /^(ftp|http|https):\/\/[^ "]+$/.test(inputValue);
-  //   setIsValidLink(isValid);
-  // };
+  const handleChange = (e) => {
+    const inputValue = e.target.value;
+
+    setLinkTag(inputValue);
+
+    // Validate the input value using a regular expression
+    const isValid = /^(ftp|http|https):\/\/[^ "]+$/.test(inputValue);
+    setIsValidLink(isValid);
+  };
 
 
 
@@ -64,32 +66,14 @@ const Customizelinks = ({ setLinks, links }) => {
     setSocialLinks(newDropdowns);
   }
 
-  // const handleLinkChange = (index, e, field) => {
-  //   const { value } = e.target;
-  //   const newDropdowns = [...socialLinks];
-  //   if(field === 'logo'){
-  //     newDropdowns[index].selectedOption = value;
-  //   }else if(field === 'link'){
-  //     newDropdowns[index].inputValue = value
-  //   }
-  //   setSocialLinks(newDropdowns);
-  // };
-
-  const handleInputChange = (index, e, field) => {
+  const handleLinkChange = (index, e, field) => {
     const { value } = e.target;
     const newDropdowns = [...socialLinks];
-    
-    if (field === 'logo') {
-      setLinkTag(value);
-    } else if (field === 'link') {
-      setLinkTag(value);
-      newDropdowns[index].inputValue = value;
+    if(field === 'logo'){
+      newDropdowns[index].selectedOption = value;
+    }else if(field === 'link'){
+      newDropdowns[index].inputValue = value
     }
-    
-    // Validate the input value using a regular expression
-    const isValid = /^(ftp|http|https):\/\/[^ "]+$/.test(value);
-    setIsValidLink(isValid);
-    
     setSocialLinks(newDropdowns);
   };
   
@@ -129,7 +113,6 @@ const Customizelinks = ({ setLinks, links }) => {
           <p className="text-[12px] pb-[15px] pt-[5px] text-gray-700">Add/edit/remove links below and then share all your profit with the whole!</p>
 
           <button  onClick={handleCreateTemplateDev} className="text-[13px] font-bold text-purple-700 w-[100%] py-[9px] px-[20px] rounded-[6px]" style={{ border: "1px solid purple" }}> {" "}+ Add new link</button>
-          {/* <button onClick={handleCreateTemplateDev} className="text-[13px] font-bold text-purple-700 w-[100%] py-[9px] px-[20px] rounded-[6px]" style={{ border: "1px solid purple" }}> {" "}+ Add new link</button> */}
         </div>
 
 
@@ -177,7 +160,8 @@ const Customizelinks = ({ setLinks, links }) => {
 
                   <div className="flex gap-1 items-center justify-between px-3 py-2 w-[100%] border rounded-[7px]">
                     <i className="ri-links-fill"></i>
-                    <input onChange={(e) => handleInputChange(index, e, 'link')}
+                    <input 
+                        onChange={(e) => { handleLinkChange(index, e, 'link'); handleChange(e); }}
                         type="text"
                         value={linkTag}
                         className="w-[100%] rounded-sm outline-none bg-purple-50 "/>
