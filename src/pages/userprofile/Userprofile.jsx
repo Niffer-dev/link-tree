@@ -18,7 +18,6 @@ const Userprofile = () => {
         <div>
           <Profile firstName={firstName} lastName={lastName} email={email} setFirstName={setFirstName} setLastName={setLastName} setEmail={setEmail}/>
 
-          {/* <Button /> */}
         </div>
     </div>
   )

@@ -19,6 +19,33 @@ const Home = () => {
       });
     }
 
+    const saveLinks = (event) => {
+      event.preventDefault();
+      if (isValidLink) {
+        console.log('Link is valid:', linkTag);
+
+       // Retrieve existing social links from local storage
+       let storedLinks = JSON.parse(localStorage.getItem('socialLinks')) || [];
+
+       // Merge new social links with existing ones
+       const updatedLinks = [...storedLinks, ...socialLinks];
+
+       // Store the updated social links in local storage
+       localStorage.setItem('socialLinks', JSON.stringify(updatedLinks));
+
+       console.log("Social links saved to local storage:", updatedLinks);
+      } else {
+
+        // Handle invalid input, such as displaying an error message
+
+        console.log('Invalid link:', linkTag);
+        
+      }
+
+    };
+
+
+
   return (
     <div className='flex justify-center'>
       <Phone />
@@ -26,7 +53,6 @@ const Home = () => {
       <div className='flex-col w-[50%]'>
         <Customizelinks links={links} setLinks={setLinks}/>
 
-        <Button getInputs={getInputs}/>
       </div>
     </div>
    )

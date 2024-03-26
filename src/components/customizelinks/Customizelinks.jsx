@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Button from "../button/Button";
 import facebook from "../../assets/facebook.jpeg";
 import instagram from "../../assets/instagram.jpeg";
 import telegram from "../../assets/telegram.jpeg";
@@ -46,26 +47,17 @@ const Customizelinks = ({ setLinks, links }) => {
   const [linkTag, setLinkTag] = useState('');
   const [isValidLink, setIsValidLink] = useState(true);
 
-  const handleChange = (e) => {
-    const inputValue = e.target.value;
-
-    setLinkTag(inputValue);
-
-    // Validate the input value using a regular expression
-    const isValid = /^(ftp|http|https):\/\/[^ "]+$/.test(inputValue);
-    setIsValidLink(isValid);
-  };
-
-
-
+  
+  
+  
   const [socialLinks, setSocialLinks] = useState([]);
-
+  
   const handleCreateTemplateDev = () => {
     const newDropdowns = [...socialLinks];
-    newDropdowns.push({ selectedOption: '', inputValue:'', bgColor : '' });
+    newDropdowns.push({logo: '', selectedOption: '', inputValue:'', bgColor : '' });
     setSocialLinks(newDropdowns);
   }
-
+  
   const handleLinkChange = (index, e, field) => {
     const { value } = e.target;
     const newDropdowns = [...socialLinks];
@@ -77,6 +69,15 @@ const Customizelinks = ({ setLinks, links }) => {
     setSocialLinks(newDropdowns);
   };
   
+  const handleChange = (e) => {
+    const inputValue = e.target.value;
+
+    setLinkTag(inputValue);
+
+    // Validate the input value using a regular expression
+    const isValid = /^(ftp|http|https):\/\/[^ "]+$/.test(inputValue);
+    setIsValidLink(isValid);
+  };
 
 
   const removeLinkDiv = (index) => {
@@ -90,10 +91,16 @@ const Customizelinks = ({ setLinks, links }) => {
     if (isValidLink) {
       console.log('Link is valid:', linkTag);
 
-      // Perform additional actions here, such as submitting the form
+     // Retrieve existing social links from local storage
+     let storedLinks = JSON.parse(localStorage.getItem('socialLinks')) || [];
 
-      localStorage.setItem('socialLinks', JSON.stringify(socialLinks));
-      console.log("Social links saved to local storage:", socialLinks);
+     // Merge new social links with existing ones
+     const updatedLinks = [...storedLinks, ...socialLinks];
+
+     // Store the updated social links in local storage
+     localStorage.setItem('socialLinks', JSON.stringify(updatedLinks));
+
+     console.log("Social links saved to local storage:", updatedLinks);
     } else {
 
       // Handle invalid input, such as displaying an error message
@@ -127,53 +134,45 @@ const Customizelinks = ({ setLinks, links }) => {
               <div>
                 <p className="text-[10px] py-[3px] font-semibold text-gray-700">Perform</p>
                 <select className="w-full bg-transparent border py-1 px-2 rounded"
-            value={link.selectedOption}
-            onChange={(e) => handleLinkChange(index, e, 'logo')}
-          >
-            <option value="">Select an option</option>
-            {
-              linksArray.map(social => (
-                <>
-                  <img src={social.logo} alt="" />
-                  <option value={social.name}>{social.name}</option>
-                </>
-              ))
-            }
-          </select>
+                  value={link.selectedOption}
+                  onChange={(e) => handleLinkChange(index, e, 'logo')}
+                >
+                  <option value="">Select an option</option>
 
-                {/* <div className="relative flex items-center justify-between px-3 py-2 w-[100%] border rounded-[7px]">
 
-                  <div className="flex items-center gap-1">
-                    <img src={selectedMedia.logo} className="h-[20px] w-[20px]" alt=""  />
-                    <button className="text-[12px] py-[2px] rounded-sm">{selectedMedia.name}</button>
-                  </div>
+                  {
+                    linksArray.map((social) => (
+                      <>
+                        <img src={social.logo} alt="" />
+                        <option value={social.name}>{social.name}</option>
+                      </>
+                    ))
+                  }
 
-                  <div>
-                    <i className="text-black cursor-pointer ri-arrow-down-s-line text-2xl" onClick={() => setShowLinksDropDown(index)}></i>
-                  </div>
-                  
-                </div> */}
+                </select>
+
+            
               </div>
 
               <div>
                 <p className="pt-[12px] pb-[5px] text-[10px] font-semibold text-gray-700">Link</p>
 
-                  <div className="flex gap-1 items-center justify-between px-3 py-2 w-[100%] border rounded-[7px]">
-                    <i className="ri-links-fill"></i>
-                    <input 
-                        onChange={(e) => { handleLinkChange(index, e, 'link'); handleChange(e); }}
-                        type="text"
-                        value={linkTag}
-                        className="w-[100%] rounded-sm outline-none bg-purple-50 "/>
+                <div className="flex gap-1 items-center justify-between px-3 py-2 w-[100%] border rounded-[7px]">
+                  <i className="ri-links-fill"></i>
+                      <input 
+                          onChange={(e) => { handleLinkChange(index, e, 'link'); handleChange(e); }}
+                          type="text"
+                          // value={linkTag}
+                          className="w-[100%] rounded-sm outline-none bg-purple-50 "/>
                   </div>
-                </div>
+              </div>
 
                 {!isValidLink && <p style={{ color: 'red' }}>Please enter a valid link</p>}
             </div>
           ))}
         </div>
       </div>
-      <button className="bg-green-600 py-1 px-3 rounded text-white" onClick={saveLinks}>Saveeee</button>
+      <Button saveLinks={saveLinks}/>
     </div>
   );
 }

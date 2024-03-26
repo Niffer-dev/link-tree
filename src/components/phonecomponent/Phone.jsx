@@ -3,12 +3,12 @@ import Linkbuttons from '../linkbuttons/Linkbuttons'
 
 const Phone = ({firstName, lastName, email, socialLinks, setSocialLinks}) => {
 
+
+
   const user = JSON.parse(localStorage.getItem('dataArray'))
 
   const storedLinks = JSON.parse(localStorage.getItem('socialLinks'));
 
-  // const storedLinks = JSON.parse(localStorage.getItem('socialLinks'))
-  // console.log(storedLinks[index].selectedOption);
 
   return (
     <div>
@@ -18,7 +18,12 @@ const Phone = ({firstName, lastName, email, socialLinks, setSocialLinks}) => {
                 </div>
 
                 <div className='flex items-center justify-center  w-full'>
+                  {
+                    user ? 
+                    <img src={user && user.profileImg} className='rounded-full mt-[4px] mx-auto h-[100px] w-[100px]' alt="" />
+                    :
                     <div className=' rounded-full bg-[#ccc] mt-[4px] mx-auto h-[100px] w-[100px]'></div>
+                  }
                 </div>
 
               {user ?
@@ -33,7 +38,10 @@ const Phone = ({firstName, lastName, email, socialLinks, setSocialLinks}) => {
                 </div>
                 }
 
-                <Linkbuttons storedLinks={storedLinks}/>
+                {
+                  storedLinks &&
+                  <Linkbuttons storedLinks={storedLinks}/>
+                }
             </div>
         </div>
     </div>
